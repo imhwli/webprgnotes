@@ -26,7 +26,7 @@ HTML Examples
 
 ***HTML content tag***
 ~~~
-<html>       // begin html content 
+<html>       // begin html content or the contents of the websites
 
 </html>		 // end of html content
 ~~~
@@ -35,6 +35,7 @@ HTML Examples
 
 ***Head Tag***
 - Metadata or information about the pages, reference links or files
+- information that helpful to the browser
 ~~~
 <head>
 
@@ -333,7 +334,115 @@ HTML file
 
 
 
-## Part II
+## HTML Part II
+
+Anchor Tag
+~~~
+<a href="filename or link"> Click me </a>
+~~~
+
+
+***Link to different places/content in the same pages by id attributes***
+~~~
+<h2> Table of contents</h2>
+<ul>
+	<li><a href="#section1">Section 1</a>></li>>
+	<li><a href="#section2">Section 2</a>></li>>
+	<li><a href="#section3">Section 3</a>></li>>
+</ul>>
+
+<h2 id="section1">Section 1</h2>>
+<p>babkdasjf fdsaljfdsf dsa fpods fapos fdsaf aoidsf adf</p>>
+
+<h2 id="section2">Section 2</h2>>
+<p>babkdasjf fdsaljfdsf dsa fpods fapos fdsaf aoidsf adf</p>>
+
+<h2 id="section3">Section 3</h2>>
+<p>babkdasjf fdsaljfdsf dsa fpods fapos fdsaf aoidsf adf</p>>
+~~~
+
+> Not a good idea to link by class because class refer to a group/collection of items. 
+> Great with id because it is uniquely identify a section of the html contents
+
+
+***HTML4***
+- Common organization of the HTML4
+~~~
+- <div class="header">
+- <div class="nav">
+- <div class="section">
+- <div class="footer">
+
+~~~
+
+***HTML5***
+- The common organization is built into HTML5 
+~~~
+<header></header>
+<nav></nav>
+<section></section>
+<footer></footer>
+.....
+<audio>
+<video>
+<datalist>
+....
+~~~
+
+***Different type of the input types***
+~~~
+<form>
+	<div>
+		<input type="text" name="name" placeholder="Name">
+		<input type="password" name="password" placeholder="Password">
+	</div>
+
+	<div>
+		Favorite color?
+		<input type="radio" name="Red"> Red
+		<input type="radio" name="Green"> Green
+		<input type="radio" name="Blue"> Blue
+	</dir>
+
+</form>
+~~~
+
+
+## CSS Part II
+
+Nested list/sublist - refer to to the DOM structure
+Unorder list inside a order list
+
+***If ul is inside of ol, then color the text to red.***
+~~~
+ol ul {
+	color: red;
+}
+~~~
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
