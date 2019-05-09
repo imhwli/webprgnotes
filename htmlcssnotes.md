@@ -367,11 +367,12 @@ Anchor Tag
 
 ***HTML4***
 - Common organization of the HTML4
+
 ~~~
-- <div class="header">
-- <div class="nav">
-- <div class="section">
-- <div class="footer">
+<div class="header">
+<div class="nav">
+<div class="section">
+<div class="footer">
 
 ~~~
 
@@ -410,6 +411,8 @@ Anchor Tag
 
 ## CSS Part II
 
+***CSS Selectors***
+
 Nested list/sublist - refer to to the DOM structure
 Unorder list inside a order list
 
@@ -420,8 +423,54 @@ ol ul {
 }
 ~~~
 
+Selecting element by HTML attributes
+~~~
+<input type=text id="button"> 
+
+input[type=text] {
+	background-color: red:
+}
+
+~~~
+
+***Interacting with users***
+~~~
+button {
+	background-color: red
+}
+
+button:hover {
+	background-color: orange
+}
+~~~
+
+***:: before and ::after***
+~~~
+a::before {
+	content: "\21d2 Click here: ";
+	font-weight:bold;
+}
+~~~
+
+***::selection ***
+
+for highlighting feature
 
 
+***CSS Selectors***
+
+|CSS    |Description                        |
+|-------|-----------------------------------|
+|a, b   | multiple element selector         |
+|a b    | Descendant selector               | 
+|a > b  | child selector                    |
+|a + b  | Adjacent Sibling selector         |
+|[a=b]  | Attribute Selector                |
+|a:b    | Pseudocclass Selector             |
+|a::b   | Pseudoelement Selector            |
+
+
+> Use sublist for examples
 
 
 
