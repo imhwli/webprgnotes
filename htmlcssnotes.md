@@ -1,5 +1,6 @@
 ## HTML notes
 
+
 HTML Examples
 ~~~
 <!DOCTYPE html>                     
@@ -49,7 +50,6 @@ HTML Examples
 
 </title>
 ~~~
-
 
 
 
@@ -207,7 +207,7 @@ p {
 #### CSS properties
 
 - controlling spacing 
-	- margin - ourside spacing of the div in this case
+	- margin - outside spacing of the div in this case
 	- padding - inside spacing of the div in this case
 
 ~~~
@@ -249,7 +249,7 @@ div {
 ~~~
 
 
-Styling table
+***Styling table***
 ~~~
 table {
 	vorder: 2px solid black;
@@ -459,18 +459,269 @@ for highlighting feature
 
 ***CSS Selectors***
 
-|CSS    |Description                        |
-|-------|-----------------------------------|
-|a, b   | multiple element selector         |
-|a b    | Descendant selector               | 
-|a > b  | child selector                    |
-|a + b  | Adjacent Sibling selector         |
-|[a=b]  | Attribute Selector                |
-|a:b    | Pseudocclass Selector             |
-|a::b   | Pseudoelement Selector            |
+|CSS    |Description                               |
+|-------|------------------------------------------|
+|a, b   | multiple element selector                |
+|a b    | Descendant selector                      | 
+|a > b  | child selector, select immediate child   |
+|a + b  | Adjacent Sibling selector                |
+|[a=b]  | Attribute Selector                       |
+|a:b    | Pseudocclass Selector                    |
+|a::b   | Pseudoelement Selector                   |
 
 
 > Use sublist for examples
+
+
+
+
+
+## Responsive Design 
+
+- Making web pages adapt to change in screen size and different devices 
+
+***Responsive Design Strategies***
+- Media query 
+- Viewport 
+- Flexbox
+- Grids
+
+
+***Medeia Query***
+
+- @media mean create media query and apply the css in particular situation 
+- in this case the media is print. The 3rd paragraph will not appear when printing the HTML file 
+
+~~~
+<head>
+	<title>My web pages!</title>
+	<style>
+		@media print {
+			.screen-only {
+				display:none;
+			}
+		}
+
+	</style>
+</head>
+
+<body>
+	<p>This is a paragraph</p>
+	<p>This another paragraph</p>
+	<p class="screen-only">This paragraph won't appear when you print </p>
+</body>
+
+~~~
+
+
+***Media as Screen size*** 
+
+~~~
+<style>
+	@media (min-width: 500px){
+		h1::before{
+			content:"Welcome to my pages!";
+		}
+		background-color:red;
+	}
+
+	@media (max-width: 499px){
+		h1::before  {
+			content: "Welcome!";
+		}
+		background-color:blue;
+	}
+
+</style>
+~~~
+
+
+***Flexbox***
+
+- built in CSS
+~~~
+
+<head>
+	<style>
+		.container {
+			display: flex;                      <-- flexbox features
+			flex-wrap: wrap;					<-- wrap around features, wrap around next line
+		}
+
+		.container > div {
+			background-color: springgreen;
+			font-size: 20px;
+			margin: 20px;
+			padding: 20px;
+			width: 200px; 
+		}
+
+	</style>
+
+</head>
+
+<body>
+
+	<div class="container">
+		<div>A. fasdifa fadsf ads f wr gre g reh  fadsf</div>
+		<div>B. fa sdf rg qr g re g q3r g  edf a sdf as dg f</div>
+		<div>C. fkdfaf we f ewarg roeg   u ou ou oiuoiu oi o</div>
+		<div>D. daoh fw AFOUEWA OFEWF UOWE UFWUEFUWE OFUAWOF</div>
+		<div>E. k faduf oauf oewaufo waeofuowaeufoaweufoaw faowe</div>
+	</div>
+
+</body>
+
+
+~~~~
+
+
+***Grid***
+
+~~~
+<head>
+	<style type="text/css">
+		.grid {
+			background-color: green;
+			display: grid;                          <---- grid format
+			padding: 20px;
+			grid-column-gap: 20px;					<--- use with grid display 	
+			grid-row-gap: 20px;
+			grid-template-columns: 200px 200px auto;    <---- auto mean auto resizing
+
+		}
+
+		.grid-item {
+			background-color: white;
+			font-size: 20px;
+			padding: 20px; 
+			text-align: center;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="grid">
+		<div class="grid-item">1</div>
+		<div class="grid-item">2</div>
+		<div class="grid-item">3</div>
+		<div class="grid-item">4</div>
+		<div class="grid-item">5</div>
+		<div class="grid-item">6</div>
+		<div class="grid-item">7</div>
+		<div class="grid-item">8</div>
+		<div class="grid-item">9</div>
+		<div class="grid-item">10</div>
+		<div class="grid-item">11</div>
+		<div class="grid-item">12</div>
+	</div>
+	
+</body>
+
+~~~
+
+
+
+### Boostrap
+CSS Library
+Many different classes for styling the HTML code
+
+~~~
+<head>
+	<title>My website</title>
+	<link rel="stylesheet" type="text/css" href="www.bostraplink......com">
+</head>
+
+<body>
+	<div class="container">
+		<h1>Hello, world!</h1>
+		<p>dasf g rw gf ae rf a ewr fa rew gi hiih iuhiu hih khkj kj k jb kk </p>
+	</div>
+</body>
+~~~
+
+- Boostrap styling column 
+
+class="col-lg-3 col-sm-6"
+
+large screen take 3 out of the 12 div boxes, small screen use 6 out of the 12 div boxes
+
+
+
+### SASS
+
+Extension of CSS with programatics ability 
+Need to install SASS 
+Alternatives: LESS
+
+> All variable in SASS begin with a $ sign
+> SASS file has file extension .scss
+> Need to convert .scss to .css with the sass command
+>    sass variables.scss variables.css
+
+variables.scss file 
+~~~
+$color: red;
+
+ul {
+	font-size: 14px;
+	color: $color;
+} 
+
+ol {
+	font-size: 18px;
+	color: $color;
+}
+~~~
+
+> sass --watch variable.scss:variable.css
+> In the above command, every time a change in .scss file will automatically compile to .css file
+
+
+***Nested SASS***
+
+~~~
+div {
+	font-sizeL 20px;
+
+	p {
+		color: blue;
+	}
+
+	ul {
+		color: green;
+	}
+}
+~~~
+
+
+***SASS inheritance***
+
+~~~
+%message {
+	font-size: 20px;
+	font-family: somefontfamily;
+	font-weight: bold;
+	padding: 10px;
+	margin: 20px; 
+}
+
+.success {
+	@extend %message;
+	background-color: green;
+}
+
+.warning {
+	@extend %message;
+	background-color: orange; 
+}
+
+.error {
+	@extend %message;
+	background-color: red; 
+}
+~~~
+
 
 
 
