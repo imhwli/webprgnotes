@@ -111,6 +111,7 @@ SELECT * FROM flights ORDER BY duration ASC;
 
 
 ***Group the origins, and then count them. Display the origins and their count***
+- Read GROUP BY first
 ~~~
 SELECT origin, COUNT(*) FROM flights GROUP BY origin;
 ~~~
@@ -121,13 +122,96 @@ SELECT origin, COUNT(*) FROM flights GROUP BY origin HAVING COUNT(*) > 1;
 
 ***Foreign Key***
 
+- Creating new passage tables
+- REFERENCE keywaord create link between the two tables 
+- THe REFERENCE keyword reinforce constraint and prevent user from breaking it. 
+~~~
+CREATE TABLE passengers (
+	id SERIAL PRIMARY KEY,
+	name VARCHAR NOT NULL,
+	flight_id INTEGER REFERENCES flights
+	);
+~~~
+
+***Joining Tables***
+~~~
+SELECT origin, destination, name FROM flights JOIN passengers 
+	ON passenger.flight_id = flights.id;
+
+SELECT origin, destination, name FROM flights JOIN passengers 
+	ON passenger.flight_id = flight.id WHERER name = 'Alice';
+~~~
+
+
+> LEFT and RIGHT JOIN. It includes element in left or right along with the intersection. 
+
+
+***Create Index***
+- Indexing for query/lookup faster
+- Trade off between faster lookup and updating data. Update data mean update the indexing as well  
+
+***Nested Query***
+~~~
+SELECT flight_id FROM passengers GROUP BY flight_id HAVING COUNT(*) > 1;
+
+// Nesting query
+SELECT * FROM flight WHERE id IN (SELECT flight_id FROM passengers GROUP BY flight_id HAVING COUNT(*) > 1);
+~~~
 
 
 
+***SQL Injection***
+- Use placeholder from SQLalchemy instead of string concatentation to avoid SQL injection
+~~~
+SELECT * FROM users 
+	WHERE (username = 'username')
+	AND (password = 'password');
+
+SELECT * FROM users 
+	WHERE (username = 'hacker')
+	AND (password = '1' OR '1' = '1');
+~~~
+
+
+***Race Conditions***
+~~~
+SELECT balance FROM bank where user_id = 1; 
+
+UPDATE bank 
+	SET balance = balance - 100
+	WHERE user_id = 1;
+~~~
+
+> First check the account balance to make sure it has $100. Then withdraw. 
+> If two select statements are ran simutaneoutly and then two update statements following them are valid to run. This can cause race condition problem. 
+
+Transaction - sequence of command and locking the database, prevent other from changing the database until it finish its transaction. 
 
 
 
+***Database Engine***
+- Database engine - handle the connection and the queryto database
+- Environment variable - variable that exist in the terminal environment. 
 
+Printing out database contents
+~~~
+import os 
+
+from sqlalchemy import create_engine
+from sqlalchemy.orm import scoped_session, sessionmaker
+
+engine =create_engine(os.getenv("DATABASE_URL"))
+db = scoped_session(sessionmaker(bind=engine))
+
+def main():
+	flights= db.execute("SELECT origin, destination, duration FROM flights").fetchall()
+	for flight in flights:
+		print(f"{flight.origin} to {flight.destination}, {flight.duration} minutes.")
+
+if __name__ == "__main__":
+	main()
+
+~~~
 
 
 
