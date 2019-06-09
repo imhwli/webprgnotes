@@ -59,6 +59,9 @@ Linking route
 
 
 
+Customize the Django admin page
+
+
 
 
 
